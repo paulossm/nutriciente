@@ -1,0 +1,2 @@
+export const LOG_IN_BUSINESS = "LOG_IN_BUSINESS";
+export const LOG_OUT_BUSINESS = "LOG_OUT_BUSINESS";
