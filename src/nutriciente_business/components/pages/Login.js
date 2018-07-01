@@ -35,7 +35,7 @@ class Login extends Component {
     });
     let { email, password, success } = this.state;
     if (email !== "" && password !== "") {
-      fetch(`${API_HOST}/seller/auth`, {
+      fetch(`${API_HOST}/businesses/auth`, {
         method: "POST",
         body: JSON.stringify({
           email: email,
@@ -53,36 +53,18 @@ class Login extends Component {
         })
         .then(data => {
           if (!data) {
-            ons.notification.alert("E-Mail oder Passwort falsch.");
+            ons.notification.alert("email ou senha incorretos");
             this.setState({
               success: false,
               loading: false
             });
           } else {
-            if (data.id) {
-              fetch(`${API_HOST}/seller?id=${data.id}`)
-                .then(response => {
-                  if (response.ok) {
-                    return response.json();
-                  }
-                })
-                .then(business => {
-                  if (!business) {
-                    ons.notification.alert();
-                    this.setState({
-                      success: false,
-                      loading: false
-                    });
-                  } else {
-                    localStorage.setItem("business", JSON.stringify(business));
-                    this.props.logInBusiness(business);
-                    this.setState({
-                      success: true,
-                      loading: false
-                    });
-                  }
-                });
-            }
+              localStorage.setItem("business", JSON.stringify(data));
+              this.props.logInBusiness(data);
+              this.setState({
+                success: true,
+                loading: false
+              });
           }
         })
         .catch(e => {
@@ -93,7 +75,7 @@ class Login extends Component {
           });
         });
     } else {
-      ons.notification.alert("Bitte füllen Sie alle Felder aus");
+      ons.notification.alert("Por favor, preencha todos os campos.");
       this.setState({
         loading: false,
         success: false
@@ -104,7 +86,7 @@ class Login extends Component {
   render() {
     const { email, password, success, loading, offline } = this.state;
     if (success) {
-      return <Redirect to="/business" />;
+      return <Redirect to="/business/home" />;
     }
 
     if (loading) {

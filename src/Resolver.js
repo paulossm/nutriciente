@@ -2,6 +2,8 @@ import React from 'react';
 import { HashRouter as Router, Route, Switch, Redirect } from "react-router-dom";
 
 import { Root as Business } from "./nutriciente_business/Root";
+import Counter from "./nutriciente_counter/Counter";
+import App from "./nutriciente_app/App";
 
 /* ONSENUI CSS FRAMEWORK */
 import 'onsenui/css/onsenui.css';
@@ -16,6 +18,8 @@ class Resolver extends React.Component {
             <Router>
                 <Switch>
                     <Route path={`/business`} component={Business} />
+                    <Route path={`/balcao`} component={Counter} />
+                    <Route path={`/client`} component={App} />
                 </Switch>
             </Router>
         )
