@@ -51,35 +51,38 @@ class Home extends Component {
     }
 
     if (!loading && !today) {
-        return <p>Não conseguimos carregar os dados do servidor! :X</p>;
+      return <p>Não conseguimos carregar os dados do servidor! :X</p>;
     }
 
     return (
-      <Page
-        renderToolbar={() => (<Header title={'Análise Geral'} />)}
-        >
-
+      <Page renderToolbar={() => <Header title={"Análise Geral"} />}>
         <List>
-            <ListItem>
-                <label className="left"><Link to="/business/home/hoje">hoje ></Link></label>
-                <label className="right">{moment().locale("pt-BR").format("dddd, DD/MM/YYYY")}</label>
-            </ListItem>
-            <ListItem>
-                <label className="left">Pratos Feitos</label>
-                <label className="right">{today.dishes}</label>
-            </ListItem>
-            <ListItem>
-                <label className="left">Peso Total</label>
-                <label className="right">{today.weight}</label>
-            </ListItem>
-            <ListItem>
-                <label className="left">Calorias</label>
-                <label className="right">{today.calories}</label>
-            </ListItem>
-            <ListItem>
-                <label className="left">Arrecadado</label>
-                <label className="right">{today.collection}</label>
-            </ListItem>
+          <ListItem>
+            <label className="left">
+              <Link to="/business/home/hoje">hoje ></Link>
+            </label>
+            <label className="right">
+              {moment()
+                .locale("pt-BR")
+                .format("dddd, DD/MM/YYYY")}
+            </label>
+          </ListItem>
+          <ListItem>
+            <label className="left">Pratos Feitos</label>
+            <label className="right">{today.dishes}</label>
+          </ListItem>
+          <ListItem>
+            <label className="left">Peso Total</label>
+            <label className="right">{today.weight}</label>
+          </ListItem>
+          <ListItem>
+            <label className="left">Calorias</label>
+            <label className="right">{today.calories}</label>
+          </ListItem>
+          <ListItem>
+            <label className="left">Arrecadado</label>
+            <label className="right">{today.collection}</label>
+          </ListItem>
         </List>
       </Page>
     );

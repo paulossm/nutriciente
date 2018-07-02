@@ -13,9 +13,9 @@ class Header extends Component {
       <Toolbar>
         <div className="left">
           {backButton && (
-              <ToolbarButton onClick={e => backButton.history.goBack(e)}>
-                  <Icon icon="ion-chevron-left, material:md-arrow-left" />
-              </ToolbarButton>
+            <ToolbarButton onClick={e => backButton.history.goBack(e)}>
+              <Icon icon="ion-chevron-left, material:md-arrow-left" />
+            </ToolbarButton>
           )}
         </div>
 

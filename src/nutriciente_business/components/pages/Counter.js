@@ -3,7 +3,16 @@ import { Redirect, Link } from "react-router-dom";
 import { RoutedTabs, NavTab } from "react-router-tabs";
 import moment from "moment";
 import ons from "onsenui";
-import { Page, List, ListItem, Input, Button, Row, Col, Card } from "react-onsenui";
+import {
+  Page,
+  List,
+  ListItem,
+  Input,
+  Button,
+  Row,
+  Col,
+  Card
+} from "react-onsenui";
 import Header from "../Header";
 import { API_HOST } from "../../redux/types/Constants";
 import Loading from "../Loading";
@@ -52,43 +61,63 @@ class Counter extends Component {
     }
 
     if (!loading && !compartiments) {
-        return <p>Não conseguimos carregar os dados do servidor! :X</p>;
+      return <p>Não conseguimos carregar os dados do servidor! :X</p>;
     }
 
     return (
       <Page
-        renderToolbar={() => (<Header backButton={{history: this.props.history}} title={'Balcão'} />)}
-        >
-
+        renderToolbar={() => (
+          <Header
+            backButton={{ history: this.props.history }}
+            title={"Balcão"}
+          />
+        )}
+      >
         <List>
-            <ListItem>
-                <label className="left">Configurar Balcão</label>
-                <label className="right">{moment().locale("pt-BR").format("dddd, DD/MM/YYYY")}</label>
-            </ListItem>
-          <Row style={{magin: '14px 14px'}}>
+          <ListItem>
+            <label className="left">Configurar Balcão</label>
+            <label className="right">
+              {moment()
+                .locale("pt-BR")
+                .format("dddd, DD/MM/YYYY")}
+            </label>
+          </ListItem>
+          <Row style={{ magin: "14px 14px" }}>
             {compartiments.map(compartiment => {
               if (compartiment.food) {
                 return (
                   <Col key={compartiment.id} width="50%">
                     <Link to={`/business/balcao/${compartiment.id}/edit`}>
-                      <Card style={{textAlign: 'center'}}>
-                        <img src={compartiment.picture ? `${API_HOST}/${compartiment.picture}` : no_pic} alt={`ícone ${compartiment.food}`} style={{width: '60%'}} />
+                      <Card style={{ textAlign: "center" }}>
+                        <img
+                          src={
+                            compartiment.picture
+                              ? `${API_HOST}/${compartiment.picture}`
+                              : no_pic
+                          }
+                          alt={`ícone ${compartiment.food}`}
+                          style={{ width: "60%" }}
+                        />
                         <h3 className="title">{compartiment.food}</h3>
                         <strong>R$ {compartiment.price}/Kg</strong>
                       </Card>
                     </Link>
                   </Col>
-                ) 
+                );
               } else {
                 return (
                   <Col key={compartiment.id} width="50%">
-                      <Card style={{textAlign: 'center'}}>
-                        <img src={no_pic} alt={`ícone sem foto`} style={{width: '60%'}} />
-                        <h3 className="title">compartimento vazio</h3>
-                        <strong>toque para adicionar</strong>
-                      </Card>
+                    <Card style={{ textAlign: "center" }}>
+                      <img
+                        src={no_pic}
+                        alt={`ícone sem foto`}
+                        style={{ width: "60%" }}
+                      />
+                      <h3 className="title">compartimento vazio</h3>
+                      <strong>toque para adicionar</strong>
+                    </Card>
                   </Col>
-                )
+                );
               }
             })}
           </Row>

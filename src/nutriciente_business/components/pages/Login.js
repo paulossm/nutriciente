@@ -59,12 +59,12 @@ class Login extends Component {
               loading: false
             });
           } else {
-              localStorage.setItem("business", JSON.stringify(data));
-              this.props.logInBusiness(data);
-              this.setState({
-                success: true,
-                loading: false
-              });
+            localStorage.setItem("business", JSON.stringify(data));
+            this.props.logInBusiness(data);
+            this.setState({
+              success: true,
+              loading: false
+            });
           }
         })
         .catch(e => {
@@ -100,7 +100,7 @@ class Login extends Component {
           src={logo}
           alt="Nutriciente - empresas"
           style={{
-            maxWidth: '120px',
+            maxWidth: "120px",
             display: "block",
             margin: "16px auto 32px"
           }}
@@ -108,7 +108,8 @@ class Login extends Component {
         <h3 style={{ textAlign: "center" }}>Login</h3>
         {!loading && offline && <Offline />}
 
-        {(!loading && !offline) && (
+        {!loading &&
+          !offline && (
             <form onSubmit={e => this.submit(e)}>
               <List>
                 <ListItem>

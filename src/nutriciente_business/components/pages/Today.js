@@ -109,22 +109,22 @@ class Today extends Component {
           />
         )}
       >
-        <section id="plates" style={{marginLeft: '15px'}}>
+        <section id="plates" style={{ marginLeft: "15px" }}>
           <h3>Pratos</h3>
           <Row>
-            <Col width="33%" style={{textAlign: 'center'}}>
+            <Col width="33%" style={{ textAlign: "center" }}>
               <Card>
                 <img src={plate_icon} alt="prato" />
                 <label className="title">{resume.dishes}</label>
               </Card>
             </Col>
-            <Col width="33%" style={{textAlign: 'center'}}>
+            <Col width="33%" style={{ textAlign: "center" }}>
               <Card>
                 <img src={balance_icon} alt="prato" />
                 <label className="title">{resume.weight}</label>
               </Card>
             </Col>
-            <Col width="33%" style={{textAlign: 'center'}}>
+            <Col width="33%" style={{ textAlign: "center" }}>
               <Card>
                 <label className="title">Média</label>
                 <strong>
@@ -136,24 +136,26 @@ class Today extends Component {
           </Row>
         </section>
 
-        <section id="timeline" style={{marginLeft: '15px'}}>
+        <section id="timeline" style={{ marginLeft: "15px" }}>
           <h3>Linha do Tempo</h3>
-          <img src={timeline} alt="Linha do tempo" style={{width: '100%'}} />
+          <img src={timeline} alt="Linha do tempo" style={{ width: "100%" }} />
         </section>
 
-        <section id="transactions" style={{marginLeft: '15px'}}>
-            <h3>Transações</h3>
-            <List>
-                {transactions.map(transaction => {
-                    return (
-                        <ListItem>
-                            <div className="left">{transaction.id}</div>
-                            <div className="center">{moment(transaction.time.$date).format("HH:mm")}</div>
-                            <div className="left">{transaction.weight}Kg</div>
-                        </ListItem>
-                    )
-                })}
-            </List>
+        <section id="transactions" style={{ marginLeft: "15px" }}>
+          <h3>Transações</h3>
+          <List>
+            {transactions.map(transaction => {
+              return (
+                <ListItem>
+                  <div className="left">{transaction.id}</div>
+                  <div className="center">
+                    {moment(transaction.time.$date).format("HH:mm")}
+                  </div>
+                  <div className="left">{transaction.weight}Kg</div>
+                </ListItem>
+              );
+            })}
+          </List>
         </section>
 
         <ActionSheet

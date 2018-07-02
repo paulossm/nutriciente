@@ -1,6 +1,6 @@
-import React from 'react';
-import { Route, Switch } from 'react-router-dom';
-import { Provider } from 'react-redux';
+import React from "react";
+import { Route, Switch } from "react-router-dom";
+import { Provider } from "react-redux";
 import Login from "./components/pages/Login";
 import Home from "./components/pages/Home";
 import Counter from "./components/pages/Counter";
@@ -13,17 +13,17 @@ import { configureStore } from "./redux/Store";
 const store = configureStore();
 
 export class Root extends React.Component {
-    render() {
-        return (
-            <Provider store={store}>
-                <Switch>
-                    <Route exact path="/business/login" component={Login} />
-                    <Route exact path="/business/home" component={Home} />
-                    <Route exact path="/business/home/hoje" component={Today} />
-                    <Route exact path="/business/balcao" component={Counter} />
-                    <Route path="/business/balcao/:id/edit" component={CounterItem} />
-                </Switch>
-            </Provider>
-        )
-    }
-};
+  render() {
+    return (
+      <Provider store={store}>
+        <Switch>
+          <Route exact path="/business/login" component={Login} />
+          <Route exact path="/business/home" component={Home} />
+          <Route exact path="/business/home/hoje" component={Today} />
+          <Route exact path="/business/balcao" component={Counter} />
+          <Route path="/business/balcao/:id/edit" component={CounterItem} />
+        </Switch>
+      </Provider>
+    );
+  }
+}

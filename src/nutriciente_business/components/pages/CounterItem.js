@@ -84,21 +84,24 @@ class CounterItem extends Component {
         .then(response => {
           if (response) {
             let transaction = {
-                compartiment: {
-                    food: compartiment.food,
-                    price: compartiment.price,
-                    calories: compartiment.calories,
-                    comments: compartiment.comments
-                }
-            };
-            fetch(`${API_HOST}/businesses/0/counters/0/items/${compartiment.id}`, {
-              method: "POST",
-              body: JSON.stringify(transaction),
-              headers: {
-                "Content-Type": "application/json",
-                Accept: "application/json"
+              compartiment: {
+                food: compartiment.food,
+                price: compartiment.price,
+                calories: compartiment.calories,
+                comments: compartiment.comments
               }
-            })
+            };
+            fetch(
+              `${API_HOST}/businesses/0/counters/0/items/${compartiment.id}`,
+              {
+                method: "POST",
+                body: JSON.stringify(transaction),
+                headers: {
+                  "Content-Type": "application/json",
+                  Accept: "application/json"
+                }
+              }
+            )
               .then(response => {
                 if (response.ok) {
                   this.setState({
