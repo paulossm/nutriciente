@@ -9,6 +9,11 @@ import { API_HOST } from "../../redux/types/Constants";
 import Loading from "../Loading";
 import Offline from "../Offline";
 
+
+/**
+ * Classe Home.
+ * Representa a página inicial da aplicação.
+ */
 class Home extends Component {
   constructor(props) {
     super(props);
@@ -51,7 +56,7 @@ class Home extends Component {
     }
 
     if (!loading && !today) {
-      return <p>Não conseguimos carregar os dados do servidor! :X</p>;
+      return <p>{"Não conseguimos carregar os dados do servidor!"}</p>;
     }
 
     return (

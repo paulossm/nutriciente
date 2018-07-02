@@ -19,6 +19,11 @@ import Loading from "../Loading";
 import Offline from "../Offline";
 import no_pic from "../../img/no-pictures.svg";
 
+/**
+ * Class Counter
+ * Representa o balcão do restaurante.
+ * reúne os métodos de requisição e visualização das informações do balcão.
+ */
 class Counter extends Component {
   constructor(props) {
     super(props);
@@ -30,6 +35,13 @@ class Counter extends Component {
   }
 
   componentDidMount() {
+    this.fetchCounterData();
+  }
+
+  /**
+   * Método para recuperar as informações da API realativas ao balcão.
+   */
+  fetchCounterData() {
     fetch(`${API_HOST}/businesses/0/counters/0`)
       .then(response => {
         if (response.ok) {
@@ -61,7 +73,7 @@ class Counter extends Component {
     }
 
     if (!loading && !compartiments) {
-      return <p>Não conseguimos carregar os dados do servidor! :X</p>;
+      return <p>{"Não conseguimos carregar os dados do servidor!"}</p>;
     }
 
     return (

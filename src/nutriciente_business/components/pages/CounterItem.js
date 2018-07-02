@@ -19,6 +19,11 @@ import Loading from "../Loading";
 import Offline from "../Offline";
 import no_pic from "../../img/no-pictures.svg";
 
+/**
+ * Classe CounterItem.
+ * Representa um compartimento do balcão do restaurante.
+ * Com as informações relativas ao alimento no balcão.
+ */
 class CounterItem extends Component {
   constructor(props) {
     super(props);
@@ -66,12 +71,22 @@ class CounterItem extends Component {
       });
   }
 
+  /**
+   * Método que atualiza o state conforme o formulário é preenchido.
+   * @param e
+   * evento gerado pelo navegador que possui o elemento modificado.
+   */
   change = e => {
     this.setState({
       [e.target.name]: e.target.value
     });
   };
 
+  /**
+   * Submete as informações do formulário para a API.
+   * @param e
+   * evento gerado pelo navegador que possui o elemento modificado.
+   */
   submit = e => {
     e.preventDefault();
     let { formSuccess, ...compartiment } = this.state;
@@ -140,7 +155,7 @@ class CounterItem extends Component {
     }
 
     if (!loading && !compartiment) {
-      return <p>Não conseguimos carregar os dados do servidor! :X</p>;
+      return <p>{"Não conseguimos carregar os dados do servidor!"}</p>;
     }
 
     return (

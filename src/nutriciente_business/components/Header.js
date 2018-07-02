@@ -6,6 +6,10 @@ import { Link } from "react-router-dom";
 /* Layout, CSS */
 import { Toolbar, ToolbarButton, Icon } from "react-onsenui";
 
+/**
+ * Class Header.
+ * Representa o cabeçalho que aparece na parte superior das páginas.
+ */
 class Header extends Component {
   render() {
     const { action, backButton, title } = this.props;

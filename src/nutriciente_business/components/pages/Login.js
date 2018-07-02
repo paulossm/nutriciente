@@ -10,6 +10,10 @@ import Offline from "../Offline";
 
 import logo from "../../static/img/logo.png";
 
+/**
+ * Classe Login.
+ * Representa a página de login da aplicação.
+ */
 class Login extends Component {
   constructor(props) {
     super(props);
@@ -22,12 +26,22 @@ class Login extends Component {
     };
   }
 
+  /**
+   * Método que atualiza o state conforme o formulário é preenchido.
+   * @param e
+   * evento gerado pelo navegador que possui o elemento modificado.
+   */
   change = e => {
     this.setState({
       [e.target.name]: e.target.value
     });
   };
 
+  /**
+   * Submete as informações do formulário para a API.
+   * @param e
+   * evento gerado pelo navegador que possui o elemento modificado.
+   */
   submit(e) {
     e.preventDefault();
     this.setState({

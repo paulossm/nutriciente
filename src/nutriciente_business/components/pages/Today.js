@@ -25,6 +25,10 @@ import timeline from "../../static/img/timeline.png";
 import * as jsPDF from "jspdf";
 import * as html2canvas from "html2canvas";
 
+/**
+ * Classe Home.
+ * Representa a página de informações do dia.
+ */
 class Today extends Component {
   constructor(props) {
     super(props);
@@ -63,6 +67,10 @@ class Today extends Component {
       });
   }
 
+  /**
+   * generatePDF
+   * método que gera o PDF do HTML da página.
+   */
   generatePDF() {
     html2canvas(document.body).then(canvas => {
       var img = canvas.toDataURL("image/png");
@@ -73,12 +81,20 @@ class Today extends Component {
     this.closeActions();
   }
 
+  /**
+   * openActions
+   * método que abre as opções de compartilhamento da página.
+   */
   openActions() {
     this.setState({
       actions: true
     });
   }
 
+  /**
+   * closeActions
+   * método que fecha as opções de compartilhamento da página.
+   */
   closeActions() {
     this.setState({
       actions: false
@@ -93,7 +109,7 @@ class Today extends Component {
     }
 
     if (!loading && !resume) {
-      return <p>Não conseguimos carregar os dados do servidor! :X</p>;
+      return <p>{"Não conseguimos carregar os dados do servidor!"}</p>;
     }
 
     return (
@@ -129,7 +145,7 @@ class Today extends Component {
                 <label className="title">Média</label>
                 <strong>
                   {(parseFloat(resume.weight) / resume.dishes).toFixed(3)}
-                  Kg / Prato
+                  {"Kg / Prato"}
                 </strong>
               </Card>
             </Col>

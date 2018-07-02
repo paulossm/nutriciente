@@ -12,11 +12,17 @@ app.use(bodyParser.json());
 app.use(cors());
 app.use("/public", express.static(__dirname + "/public"));
 
+/**
+ * Método para autenticar um usuário por email e senha
+ */
 app.post("/businesses/auth", (request, response) => {
   response.status(200).json(db.businesses[0]);
   response.end();
 });
 
+/**
+ * Método para recuperar dados do dia para o restaurante.
+ */
 app.get("/businesses/:id/today", (request, response) => {
   let output = {
     resume: db.services[0].today,
@@ -26,6 +32,9 @@ app.get("/businesses/:id/today", (request, response) => {
   response.end();
 });
 
+/**
+ * Método para recuperar dados do balcão.
+ */
 app.get(
   "/businesses/:business_id/counters/:counter_id",
   (request, response) => {
@@ -36,6 +45,9 @@ app.get(
   }
 );
 
+/**
+ * Método para recuperar dados de um alimento no balcão.
+ */
 app.get(
   "/businesses/:business_id/counters/:counter_id/items/:item_id/edit",
   (request, response) => {
@@ -47,6 +59,9 @@ app.get(
   }
 );
 
+/**
+ * Método para atualizar dados de um alimento no balcão.
+ */
 app.post(
   "/businesses/:business_id/counters/:counter_id/items/:item_id",
   (request, response) => {
@@ -74,11 +89,17 @@ app.post(
   }
 );
 
+/**
+ * Método para recuperar dados de um prato feito no restaurante.
+ */
 app.get("/users/:user_id/transactions/:transaction_id", (request, response) => {
   response.json(db.users[0].transactions[0]);
   response.end();
 });
 
+/**
+ * Método para iniciar o servidor.
+ */
 app.listen(3001, function() {
   console.log("Server running on port 3001.");
 });

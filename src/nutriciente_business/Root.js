@@ -12,6 +12,10 @@ import { configureStore } from "./redux/Store";
 
 const store = configureStore();
 
+/**
+ * Class Root.
+ * Representa o componente que mapeia as URL para as respectivas páginas.
+ */
 export class Root extends React.Component {
   render() {
     return (
